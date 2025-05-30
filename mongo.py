@@ -1,10 +1,8 @@
-import collections
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost:27017/")
-
-db = client.ordenesproduccion
-coleccion = db.ordenes
+db = client['ordenesproduccion']
+collection = db['ordenes']
 
 lista = [
     {"razon_social": "indumaster", "ruc": "1390140858001", "telefono": "0987107295",
@@ -24,8 +22,5 @@ lista = [
      "cantidad": 20, "precio_unitario": 15, "total": 300}                                               
 ]
 
-# Insertar en la colección
-coleccion.insert_many(lista)
+collection.insert_many(lista)
 print("Documentos insertados correctamente.")
-
-
