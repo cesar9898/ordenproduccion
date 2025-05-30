@@ -1,7 +1,7 @@
 import collections
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017/appordenproduccion")
+client = MongoClient("mongodb://localhost:27017/")
 
 db = client.ordenesproduccion
 coleccion = db.ordenes
