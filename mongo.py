@@ -55,7 +55,12 @@ def add_orden(collection):
 
 
 def list_users():
-    print("listar ordenes") 
+    print("\nlista ordenes de produccion: ")
+    orden_produccion = collection.find()
+    for orden in orden_produccion:
+        print(f"Razon Social: {orden['razon_social']}, RUC: {orden['ruc']}, Fecha: {orden['fecha']}, "
+              f"Descripcion: {orden['descripcion_trabajo']}, Cantidad: {orden['cantidad']}, "
+              f"Precio Total: {orden['precio_total']}, Estado: {orden['estado']}") 
 
 
 def main():
