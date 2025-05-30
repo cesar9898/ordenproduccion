@@ -1,26 +1,92 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client['ordenesproduccion']
-collection = db['ordenes']  # Corregido el nombre de la variable
+class Orden_Produccion:
+    def __init__(self, razon_social, ruc, fecha, descripcion_trabajo, cantidad, precio_total, estado):
+        self.razon_social = razon_social
+        self.ruc = ruc
+        self.fecha = fecha
+        self.descripcion_trabajo = descripcion_trabajo
+        self.cantidad = cantidad
+        self.precio_total = precio_total
+        self.estado = estado            
 
-lista = [
-    {"razon_social": "indumaster", "ruc": "1390140858001", "telefono": "0987107295",
-     "descripcion_trabajo": "flayers", "fecha_entrega": "2025-10-01",
-     "cantidad": 5000, "precio_unitario": 0.5, "total": 500},   
+def connect_to_mongo():
+    """
+    este metodo conecta a Mongo.
+    """
     
-    {"razon_social": "epespo", "ruc": "1709271514001", "telefono": "0936148523",
-     "descripcion_trabajo": "rollup", "fecha_entrega": "2025-10-05",
-     "cantidad": 5, "precio_unitario": 75, "total": 375},
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client ['ordenesproduccion']
+    return db ['ordenes']
+     
+
+def add_orden(collection):
+    print("\nagregar orden")
+    razon_social = input('ingrese razon social: ')
+    ruc = input('ingrese numero de orden: ')
+    fecha = input('ingrese fecha: ')
+    descripcion_trabajo = input('ingrese descripcion: ')
+    cantidad = input('ingrese cantidad: ')
+    precio_total = input('ingrese precio total: ')
+    estado = input('ingrese estado: ')  
+
+    orden_produccion = { 
+        'razon_social': razon_social,
+        'ruc': ruc,
+        'fecha': fecha,
+        'descripcion_trabajo': descripcion_trabajo,
+        'cantidad': cantidad,
+        'precio_total': precio_total,
+        'estado': estado
+    }
     
-    {"razon_social": "rav", "ruc": "157894269001", "telefono": "052689352",
-     "descripcion_trabajo": "revistas", "fecha_entrega": "2025-10-05",
-     "cantidad": 5, "precio_unitario": 75, "total": 375},
+    collection.insert_one(orden_produccion)
+    print("\nOrden agregada exitosamente.")
 
-    {"razon_social": "servicios_veep", "ruc": "1234567890123", "telefono": "0987654321",
-     "descripcion_trabajo": "block_formulario", "fecha_entrega": "2025-10-10",
-     "cantidad": 20, "precio_unitario": 15, "total": 300}                                               
-]
 
-collection.insert_many(lista)
-print("Documentos insertados correctamente.")
+
+
+    
+    """
+    este metodo agrega una orden a la base de datos.
+    """
+    collection.insert_one(orden_produccion)
+    print("ordenes")
+
+
+def list_users():
+    print("listar ordenes") 
+
+
+def main():
+    collection = connect_to_mongo()
+    """
+    este metodo lista las ordenes de la base de datos.
+    """
+    
+    while True:
+        print('orden de produccion')
+        print('1. agregar orden')
+        print('2. listar ordenes')
+        print('3. modificar orden')
+        print('4. anular orden')
+        print('5. salir')
+
+        opcion = input('ingrese una opcion:  ')  
+        if opcion == '1':
+            add_user(collection)
+        elif opcion == '2':     
+            list_users()
+        elif opcion == '3':
+            modify_user()
+        elif opcion == '4':
+            delete_user()
+        elif opcion == '5':
+            print('saliendo de ordenes de produccion')
+            break
+        else:
+            print('opcion no valida, intente nuevamente')
+
+
+if __name__ == '__main__':  
+    main()
