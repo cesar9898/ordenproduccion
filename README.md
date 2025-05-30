@@ -2,7 +2,7 @@
 
 ## Descripción
 
-**ordenproduccion** es una aplicación en Python que permite gestionar órdenes de producción de la imprenta copimanta utilizando una base de datos MongoDB. La aplicación facilita el registro, consulta del gerente , modificación y anulación de órdenes de producción de manera sencilla desde la terminal.
+**ordenproduccion** es una aplicación en Python que me permite gestionar órdenes de producción de la imprenta copimanta utilizando una base de datos MongoDB. La aplicación facilita el registro del cliente interno, consulta del gerente estados de ordenes de produccion  , modificación y anulación de órdenes de producción de manera sencilla desde la terminal.
 
 ## Características
 
