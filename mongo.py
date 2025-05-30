@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client['ordenesproduccion']
-collection = db['ordenes']
+collection = db['ordenes']  # Corregido el nombre de la variable
 
 lista = [
     {"razon_social": "indumaster", "ruc": "1390140858001", "telefono": "0987107295",
