@@ -15,7 +15,7 @@ with sqlite3.connect('app.db') as con:
         )
         """
     )
-    cursor.executescript(
+    cursor.execute(
         """
         INSERT INTO orden_produccion (ruc, fecha, razon_social, descripcion_trabajo, cantidad, precio_total, estado)
         VALUES (?, ?, ?, ?, ?, ?, ?)
